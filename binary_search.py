@@ -42,14 +42,30 @@ def binary_search(seq, number):
     return None
 
 
+def recursive_binary_search(list_of_numbers, wanted_number, idxl, idxr):
+
+    middle = (idxr + idxl) // 2
+    if wanted_number == list_of_numbers[middle]:
+        return middle
+    elif list_of_numbers[middle] < wanted_number:
+        return recursive_binary_search(list_of_numbers, wanted_number, middle + 1, idxr)
+    elif list_of_numbers[middle] > wanted_number:
+        return recursive_binary_search(list_of_numbers, wanted_number, idxl, middle - 1)
+    else:
+        return None
+
+
 def main(file_name, number):
     sequence = read_data(file_name=file_name, key="ordered_numbers")
 
     # iterative binary search
     binary_search(sequence, number=number)
+    idxl = 0
+    idxr = len(sequence) - 1
+    print(recursive_binary_search(sequence, my_number, idxl, idxr))
 
 
 if __name__ == "__main__":
     my_file = "sequential.json"
-    my_number = 90
+    my_number = 14
     main(my_file, my_number)
