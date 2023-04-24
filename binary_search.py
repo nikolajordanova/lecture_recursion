@@ -45,14 +45,15 @@ def binary_search(seq, number):
 def recursive_binary_search(list_of_numbers, wanted_number, idxl, idxr):
 
     middle = (idxr + idxl) // 2
-    if wanted_number == list_of_numbers[middle]:
+    if wanted_number not in list_of_numbers:
+        return None
+    elif wanted_number == list_of_numbers[middle]:
         return middle
     elif list_of_numbers[middle] < wanted_number:
         return recursive_binary_search(list_of_numbers, wanted_number, middle + 1, idxr)
     elif list_of_numbers[middle] > wanted_number:
         return recursive_binary_search(list_of_numbers, wanted_number, idxl, middle - 1)
-    else:
-        return None
+
 
 
 def main(file_name, number):
@@ -67,5 +68,5 @@ def main(file_name, number):
 
 if __name__ == "__main__":
     my_file = "sequential.json"
-    my_number = 14
+    my_number = 90
     main(my_file, my_number)
