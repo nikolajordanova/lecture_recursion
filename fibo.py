@@ -8,8 +8,12 @@ def recursive_nth_fibo(n):
 
 
 def main():
-    n_fibo = recursive_nth_fibo(4)
-    print(n_fibo)
+    n = int(input("Počet členů Fibonacciho posloupnosti: "))
+    seq = []
+    for num in range(n):
+        seq.append(recursive_nth_fibo(num))
+    #seq = [recursive_nth_fibo(num) for num in range(n)]
+    print(seq)
 
 
 if __name__ == "__main__":
